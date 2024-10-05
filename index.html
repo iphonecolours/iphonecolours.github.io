@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Colors</title>
+    <style>
+        body {sans-serif-;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            margin: 10;
+            flex-direction: column;
+        }
+        .container {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            height: 220px; /* Set container height */
+        }
+        h1 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .divider {
+            height: 1px;
+            background-color: black;
+            margin: 15px 0;
+        }
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .color-box {
+            width: 80px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .color-circle {
+            width: 20px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 4px;
+            border: 2px solid darkgrey; /* Black ring around the color */
+        }
+        .red { background-color: #FF3B30; }
+        .yellow { background-color: #FFD60A; }
+        .purple { background-color: #BF94FF; }
+        .blue { background-color: #5AC8FA; }
+        .starlight { background-color: #F8F8F8; border: 2px solid #D1D1D6; }
+        .black { background-color: #1D1D1F; }
+        .color-box span {
+            font-size: 10px;
+        }
+
+        /* Storage Selection Styles */
+        .card-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            display: none; /* Initially hidden */
+            position: relative;
+        }
+        .card-container h2 {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            padding: 10px 0;
+            border-bottom: 2px solid #333;
+            margin-bottom: 20px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+        .button-group button {
+            padding: 15px 20px;
+            border: 2px solid #000;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        .button-group button:hover {
+            background-color: #ddd;
+        }
+
+        /* Close Button Styles */
+        .close-button {
+            position: absolute;
+            top: 10px; /* Keep it inside the container */
+            right: 10px;
+            background-color: #D3D3D3; /* Light grey background */
+            color: black;
+            border: 1px solid #999;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .close-button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="color-container">
+    <h1>Choose the iPhone colour you want</h1>
+    <div class="divider"></div>
+    <div class="color-grid">
+        <div class="color-box" onclick="showStorageOptions()">
+            <div class="color-circle red"></div>
+            <span>(PRODUCT)RED</span>
+        </div>
+        <div class="color-box" onclick="showStorageOptions()">
+            <div class="color-circle yellow"></div>
+            <span>All-new yellow</span>
+        </div>
+        <div class="color-box" onclick="showStorageOptions()">
+            <div class="color-circle purple"></div>
+            <span>Purple</span>
+        </div>
+        <div class="color-box" onclick="showStorageOptions()">
+            <div class="color-circle blue"></div>
+            <span>Blue</span>
+        </div>
+        <div class="color-box" onclick="showStorageOptions()">
+            <div class="color-circle starlight"></div>
+            <span>Starlight</span>
+        </div>
+        <div class="color-box" onclick="showStorageOptions()">
+            <div class="color-circle black"></div>
+            <span>Midnight Black</span>
+        </div>
+    </div>
+</div>
+
+<!-- Storage Size Selection Container -->
+<div class="card-container" id="storage-options">
+    <button class="close-button" onclick="goBackToColors()">Back</button>
+    <h2>Choose your preferred storage size</h2>
+    <div class="button-group">
+        <button onclick="redirectTo('https://example.com/128gb')">128GB</button>
+        <button onclick="redirectTo('https://example.com/256gb')">256GB</button>
+        <button onclick="redirectTo('https://example.com/512gb')">512GB</button>
+    </div>
+</div>
+
+<script>
+    // Function to toggle between color selection and storage options
+    function showStorageOptions() {
+        var colorContainer = document.getElementById('color-container');
+        var storageContainer = document.getElementById('storage-options');
+        
+        // Hide the color container and show the storage container
+        colorContainer.style.display = 'none';
+        storageContainer.style.display = 'block';
+    }
+
+    // Function to go back to the color selection
+    function goBackToColors() {
+        var colorContainer = document.getElementById('color-container');
+        var storageContainer = document.getElementById('storage-options');
+        
+        // Show the color container and hide the storage container
+        colorContainer.style.display = 'block';
+        storageContainer.style.display = 'none';
+    }
+
+    // Function to handle redirection based on storage selection
+    function redirectTo(url) {
+        window.location.href = url;
+    }
+</script>
+
+</body>
+</html>
